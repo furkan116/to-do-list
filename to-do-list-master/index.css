@@ -27,10 +27,6 @@ html {
 	background-color: #1e3d59;
 }
 
-#main > div > div {
-	height: 50%;
-}
-
 #main > div > h2 {
 	text-align: center;
 	padding-top: 0.50rem;
@@ -51,7 +47,28 @@ html {
 	height: 80%;
 }
 
+.to-do-list-main {
+	padding-top: 0.5rem;
+	height: 100%;
+}
+
+.to-do-list-item {
+	display: flex;
+	justify-content: space-between;
+	height: 10%;
+	font-size: 1.25rem;
+	padding-top: 1.5rem;
+}
+
+.to-do-list-item-icon {
+	color: #ffffff;
+}
+
 /* To-Do List Add */
+.right-side-child {
+	height: 50%;
+}
+
 .to-do-list-add {
 	align-items: center;
 	padding-top: 2.5rem;
@@ -89,5 +106,27 @@ html {
 	border-radius: 0.25rem;
 	margin-left: 75%;
 	margin-top: 10%;
+	outline: none;
+}
+
+/* To-Do List Search */
+.to-do-list-search {
+	align-items: center;
+	padding-top: 2.5rem;
+	width: 100%;
+	height: 80%;
+}
+
+.to-do-list-search > form {
+	height: 100%;
+	padding-left: 10%;
+	padding-right: 10%;
+}
+
+.to-do-list-search-todo {	
+	padding-left: 0.5rem;
+	border-radius: 0.25rem;
+	width: 100%;
+	height: 2.5rem;
 	outline: none;
 }

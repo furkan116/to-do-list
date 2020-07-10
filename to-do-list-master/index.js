@@ -9,15 +9,45 @@ listTodos();
 
 function listTodos() {
     form.addEventListener("submit", addTodo);
+    document.addEventListener("DOMContentLoaded", loadAllToDosToUI);
+    todoList.addEventListener("click",deleteToDo);
+}
+
+function loadAllToDosToUI() {
+    let todos = gettodoFromStorage();
+
+    todos.forEach(function(todo){
+        addtodoToUI(todo);
+    });
+}
+
+function deleteToDo(e) {
+
+    if(e.target.className === "fas fa-trash") {
+        e.target.parentElement.parentElement.remove();
+        deleteToDoFromStorage(e.target.parentElement.parentElement.textContent)
+    }
+}
+
+function deleteToDoFromStorage(deletetodo) {
+
+    let todos = gettodoFromStorage();
+
+    todos.forEach(function (todo, index) {
+        if(todo === deletetodo) {
+            todos.splice(index,1);
+        }
+    });
+
+    localStorage.setItem("todos", JSON.stringify(todos));
 }
 
 function addTodo(e) {
     const newTodo = todoAdd.value.trim();
 
     addtodoToUI(newTodo);
-
-
-    e.preventDefault();    
+    addtodoToStorage(newTodo);
+    e.preventDefault();    1
 }
  
 function addtodoToUI(newTodo) {
@@ -34,7 +64,7 @@ function addtodoToUI(newTodo) {
 
     todoList.appendChild(newListItem);
     todoAdd.value = "";
-    /**
+    /*
     <li class="to-do-list-item">
         todoTest 
         <a href="#" class="to-do-list-item-icon"><i class="fas fa-trash"></i></a>
@@ -42,3 +72,24 @@ function addtodoToUI(newTodo) {
     */	
 }
 
+function gettodoFromStorage(newTodo) {
+    
+    let todos;
+
+    if(localStorage.getItem("todos") === null) {
+        todos = [];
+    }
+    else {
+        todos = JSON.parse(localStorage.getItem("todos"));
+    }
+
+    return todos;
+}
+
+function addtodoToStorage(newTodo) {
+    
+    let todos = gettodoFromStorage();
+
+    todos.push(newTodo);
+    localStorage.setItem("todos", JSON.stringify(todos));
+}

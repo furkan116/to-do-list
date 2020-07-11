@@ -11,6 +11,23 @@ function listTodos() {
     form.addEventListener("submit", addTodo);
     document.addEventListener("DOMContentLoaded", loadAllToDosToUI);
     todoList.addEventListener("click",deleteToDo);
+    todoSearch.addEventListener("keyup",searchTodo);
+}
+
+function searchTodo(e) {
+    const searchvalue = e.target.value.toLowerCase();
+    const listItems = document.querySelectorAll(".to-do-list-item");
+
+    listItems.forEach(function(listItem) {
+        const text = listItem.textContent.toLowerCase();
+
+        if(text.indexOf(searchvalue) === -1) {
+            listItem.setAttribute("style", "display : none");
+        }
+        else {
+            listItem.setAttribute("style", "display : flex");
+        }
+    })
 }
 
 function loadAllToDosToUI() {

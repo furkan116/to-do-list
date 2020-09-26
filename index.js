@@ -64,7 +64,7 @@ function addTodo(e) {
 
     addtodoToUI(newTodo);
     addtodoToStorage(newTodo);
-    e.preventDefault();    1
+    e.preventDefault();
 }
  
 function addtodoToUI(newTodo) {
